@@ -2,12 +2,12 @@
 
 void rhombus(cairo_t *cr, int x, int y)
 {
+    cairo_set_source_rgb(cr, 0.7, 0.1, 0.1);
     cairo_move_to (cr, x, y);
     cairo_line_to (cr, x+50, y+50);
     cairo_line_to (cr, x+100, y);
     cairo_line_to (cr, x+50, y-50);
     cairo_line_to (cr, x, y);
-    cairo_set_source_rgb(cr, 0.7, 0.1, 0.1);
     cairo_fill(cr);
     cairo_stroke(cr);
 }
