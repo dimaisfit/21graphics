@@ -1,0 +1,35 @@
+#include <gtk/gtk.h>
+#include <cmath>
+
+void on_draw_event (GtkWidget *widget, cairo_t *cr, gpointer data)
+{
+    float x=100, y=100;
+    cairo_move_to (cr, x, y);
+    cairo_line_to (cr, x, y+100);
+    cairo_line_to (cr, x+80, y+160);
+    cairo_line_to (cr, x+160, y+100);
+    cairo_line_to (cr, x+160, y);
+    cairo_line_to (cr, x+80, y+60);
+    cairo_line_to (cr, x+80, y+160);
+    cairo_move_to (cr, x+80, y+60);
+    cairo_line_to (cr, x, y);
+    cairo_line_to (cr, x+80, y-60);
+    cairo_line_to (cr, x+160, y);
+    int N=10;
+    for (int i=0; i<N; i++)
+    {
+        cairo_move_to (cr, x, y+100/N*i);
+        cairo_line_to (cr, x+80, y+60+100/N*i);
+    }
+    for (int i=0; i<N; i++)
+    {
+        cairo_move_to (cr, x+80+80/N*i, y+60-60/N*i);
+        cairo_line_to (cr, x+80+80/N*i, y+160-60/N*i);
+    }
+    for (int i=0; i<N; i++)
+    {
+        cairo_move_to (cr, x+80-80/N*i, y+60-60/N*i);
+        cairo_line_to (cr, x+160-80/N*i, y-60/N*i);
+    }
+    cairo_stroke (cr);
+}
